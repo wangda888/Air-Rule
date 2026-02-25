@@ -1,0 +1,89 @@
+# Sukka's Ruleset - AIGC Domains (OpenClash Format)
+# Original: https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+
+payload:
+  # >> OpenAI / ChatGPT
+  - DOMAIN-SUFFIX,openai.com
+  - DOMAIN-SUFFIX,oaistatic.com
+  - DOMAIN-SUFFIX,sora.com
+  - DOMAIN-SUFFIX,chatgpt.com
+  - DOMAIN-SUFFIX,chat.com
+  - DOMAIN-SUFFIX,ai.com
+  - DOMAIN-KEYWORD,openai
+
+  # >> Perplexity
+  - DOMAIN-SUFFIX,perplexity.ai
+
+  # >> Claude
+  - DOMAIN-SUFFIX,anthropic.com
+  - DOMAIN-SUFFIX,claude.ai
+  - DOMAIN-SUFFIX,claude.com
+
+  # >> Google Gemini
+  - DOMAIN-SUFFIX,bard.google.com
+  - DOMAIN-SUFFIX,gemini.google
+  - DOMAIN-SUFFIX,gemini.google.com
+  - DOMAIN,aisandbox-pa.googleapis.com
+  - DOMAIN,robinfrontend-pa.googleapis.com
+  # DeepMind
+  - DOMAIN-SUFFIX,deepmind.com
+  - DOMAIN-SUFFIX,deepmind.google
+  # Generative Language API
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com
+  - DOMAIN-SUFFIX,geller-pa.googleapis.com
+  - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
+  - DOMAIN-SUFFIX,cloudcode-pa.googleapis.com
+  # Google AI Studio
+  - DOMAIN,ai.google.dev
+  - DOMAIN-SUFFIX,g.ai
+  - DOMAIN-SUFFIX,aistudio.google.com
+  - DOMAIN-SUFFIX,makersuite.google.com
+  - DOMAIN,alkalicore-pa.clients6.google.com
+  - DOMAIN-KEYWORD,alkalimakersuite-pa.clients6.google.com
+  - DOMAIN-SUFFIX,generativeai.google
+  # NotebookLM
+  - DOMAIN-SUFFIX,notebooklm.google
+  - DOMAIN-SUFFIX,notebooklm.google.com
+  # Jules
+  - DOMAIN,jules.google.com
+  # Android Studio
+  - DOMAIN,aida.googleapis.com
+  # Antigravity
+  - DOMAIN,antigravity.google
+  - DOMAIN,antigravity-unleash.goog
+  - DOMAIN,daily-cloudcode-pa.googleapis.com
+
+  # >> POE
+  - DOMAIN-SUFFIX,poe.com
+
+  # >> Meta AI
+  - DOMAIN-SUFFIX,meta.ai
+
+  # >> Cloudflare AI Gateway
+  - DOMAIN,gateway.ai.cloudflare.com
+
+  # >> Dify.AI
+  - DOMAIN-SUFFIX,dify.ai
+
+  # >> Jasper
+  - DOMAIN-SUFFIX,clipdrop.co
+  - DOMAIN-SUFFIX,jasper.ai
+
+  # >> OpenArt
+  - DOMAIN-SUFFIX,openart.ai
+
+  # >> GitHub Copilot
+  - DOMAIN,api.github.com
+
+  # >> Grok
+  - DOMAIN-SUFFIX,grok.com
+  - DOMAIN-SUFFIX,x.ai
+
+  # >> groq
+  - DOMAIN-SUFFIX,groq.com
+
+  # >> JetBrains AI
+  - DOMAIN,api.jetbrains.ai
+
+  # >> OpenRouter AI
+  - DOMAIN,openrouter.ai
