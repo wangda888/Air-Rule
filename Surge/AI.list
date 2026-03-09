@@ -34,11 +34,11 @@ DOMAIN-SUFFIX,claude.com
 
 # >> Google
 # Gemini
-DOMAIN-SUFFIX,bard.google.com
-DOMAIN-SUFFIX,gemini.google
-DOMAIN-SUFFIX,gemini.google.com
-DOMAIN,aisandbox-pa.googleapis.com
-DOMAIN,robinfrontend-pa.googleapis.com
+# DOMAIN-SUFFIX,bard.google.com
+# DOMAIN-SUFFIX,gemini.google
+# DOMAIN-SUFFIX,gemini.google.com
+# DOMAIN,aisandbox-pa.googleapis.com
+# DOMAIN,robinfrontend-pa.googleapis.com
 # DeepMind
 DOMAIN-SUFFIX,deepmind.com
 DOMAIN-SUFFIX,deepmind.google
