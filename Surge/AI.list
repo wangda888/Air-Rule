@@ -9,9 +9,12 @@ DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,sora.com
 DOMAIN-SUFFIX,chatgpt.com
+# Confirmed by https://github.com/SukkaW/Surge/pull/105
+DOMAIN-SUFFIX,chatgpt.site
 DOMAIN-SUFFIX,chat.com
 DOMAIN-SUFFIX,ai.com
 DOMAIN-KEYWORD,openai
+
 # DOMAIN-SUFFIX,openaiapi-site.azureedge.net
 # DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
 # DOMAIN,openaicomproductionae4b.blob.core.windows.net
@@ -27,11 +30,14 @@ DOMAIN-KEYWORD,openai
 # >> Perplexity
 DOMAIN-SUFFIX,perplexity.ai
 
-# >> Claude
-# 核心域名（DOMAIN-SUFFIX 已覆盖所有 *.anthropic.com 子域名）
+# >> Anthropic / Claude
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,claude.com
+DOMAIN,bridge.claudeusercontent.com
+DOMAIN,claude.site
+# For the record, I don't believe Claude will use Short URLs to geo blocking.
+# However, since there is some conspiracy theories surrounding it, I will include it.
 DOMAIN-SUFFIX,clau.de
 DOMAIN-SUFFIX,claudemcpclient.com
 DOMAIN-SUFFIX,claudemcpcontent.com
@@ -59,11 +65,28 @@ IP-ASN,399358,no-resolve
 
 # >> Google
 # Gemini
-# DOMAIN-SUFFIX,bard.google.com
-# DOMAIN-SUFFIX,gemini.google
-# DOMAIN-SUFFIX,gemini.google.com
-# DOMAIN,aisandbox-pa.googleapis.com
-# DOMAIN,robinfrontend-pa.googleapis.com
+DOMAIN-SUFFIX,bard.google.com
+DOMAIN-SUFFIX,gemini.google
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN,aisandbox-pa.googleapis.com
+DOMAIN,robinfrontend-pa.googleapis.com
+# Here is how gemini.google.com doing HTTP 429 right now:
+#
+# without a special cookie, gemini.google.com will return HTTP 302 to the following URL with
+# a special state token URL parameter:
+# https://www.google.com/sorry/index?continue=https://gemini.google.com/...
+#
+# On https://www.google.com/sorry/index?continue=xxx, the CDN edge will validate this state token,
+# compare the client IPs, and reject the request with HTTP 429 if the IPs are mismatched
+#
+# If the IP matches, the CDN edge will return a HTTP 302 redirect back to https://gemini.google.com
+# with another special state token URL parameter telling gemini.google.com stop returning HTTP 302
+# back to www.google.com/sorry/index?continue=xxx and start serving the real content.
+#
+# We can simply matches www.google.com/sorry/index?continue=xxx and proxy this as well
+#
+# Note that you will need to enable MitM www.google.com for this rule to work.
+URL-REGEX,https://www\.google\.com/.*continue=https://gemini\.google\.com.+
 # DeepMind
 DOMAIN-SUFFIX,deepmind.com
 DOMAIN-SUFFIX,deepmind.google
@@ -91,6 +114,8 @@ DOMAIN,aida.googleapis.com
 DOMAIN,antigravity.google
 DOMAIN,antigravity-unleash.goog
 DOMAIN,daily-cloudcode-pa.googleapis.com
+DOMAIN,daily-cloudcode-pa.sandbox.googleapis.com
+DOMAIN,aicode.googleapis.com
 
 # >> POE
 DOMAIN-SUFFIX,poe.com
@@ -129,3 +154,19 @@ DOMAIN,api.jetbrains.ai
 # >> OpenRouter AI - Unified Relay
 # see https://github.com/SukkaW/Surge/pull/86 for reason that only root domain get proxied
 DOMAIN,openrouter.ai
+
+# >> Cursor
+# cursor.com is the marketing site, no geo blocking
+# DOMAIN-SUFFIX,cursor.com
+# Region is determined by the client IP of *.cursor.sh API requests
+DOMAIN-SUFFIX,cursor.sh
+
+# >> Windsurf (formerly Codeium)
+# windsurf.com / codeium.com are marketing sites, no geo blocking
+# Region is determined by the client IP of the API & inference requests
+DOMAIN,server.codeium.com
+DOMAIN,inference.codeium.com
+DOMAIN,server.self-serve.windsurf.com
+
+# >> Zed
+DOMAIN,cloud.zed.dev
